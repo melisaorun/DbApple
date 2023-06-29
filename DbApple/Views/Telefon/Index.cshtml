@@ -1,0 +1,53 @@
+﻿@model IEnumerable<DbApple.Models.Telefon>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<link href="~/Content/bootstrap.rtl.min.css" rel="stylesheet" />
+
+
+<p>
+    @Html.ActionLink("Yeni Ürün", "Yeni")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Marka)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Özellik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fiyat)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marka)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Özellik)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fiyat)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.TelefonNo },new {@class="btn btn-danger"}) |
+               
+                @Html.ActionLink("Sil", "Delete", new { id = item.TelefonNo }, new { @class = "btn btn-success" })
+            </td>
+        </tr>
+    }
+
+</table>
